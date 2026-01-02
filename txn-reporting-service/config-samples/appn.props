@@ -1,0 +1,49 @@
+# ===== Logging =====
+# You can point to an external log4j2 configuration file.
+log4j2.config.path=/opt/pfms/config/log4j2-txn.xml
+
+# ===== SQL queries file =====
+sql.queries.path=/opt/pfms/config/queries.properties
+
+# ===== Scheduler =====
+scheduler.enabled=true
+# Every day at 05:30 AM IST (adjust)
+scheduler.cron=0 30 5 * * *
+
+# ===== Date logic =====
+# txnDate = today(Asia/Kolkata) + offsetDays
+txn.date.offset-days=-1
+txn.date.zone=Asia/Kolkata
+
+# ===== XML output =====
+txn.output.dir=/opt/pfms/output/txn
+txn.file-seq=1
+
+# ===== Root attributes =====
+txn.bank.code=691
+txn.bank.name=IDBI BANK
+txn.root.destination=CPSMS
+txn.root.source=691
+txn.root.records-count=1000
+
+# ===== Defaults for Transaction node fields not provided by TXN query =====
+txn.txn.channel-default=V
+txn.txn.post-tran-bal-default=
+txn.txn.drcr-account-no-default=
+txn.txn.drcr-account-name-default=
+txn.txn.drcr-bank-name-default=
+txn.txn.drcr-bank-branch-code-default=
+txn.txn.tran-ref-no-default=
+txn.txn.cpsms-transaction-id-default=
+
+# ===== Database (Oracle) =====
+# Put these in the external file so the jar remains environment-agnostic.
+spring.datasource.url=jdbc:oracle:thin:@//127.0.0.1:1521/XEPDB1
+spring.datasource.username=PFMS
+spring.datasource.password=PFMS
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+# Pool tuning (optional)
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=2
+spring.datasource.hikari.connection-timeout=30000
