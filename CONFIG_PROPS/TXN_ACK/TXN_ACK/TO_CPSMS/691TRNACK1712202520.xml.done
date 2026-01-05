@@ -1,0 +1,1 @@
+<Acknowledgement MessageId="691TRNACK1712202520" Source="CPSMS" Destination="691" BankCode="691" BankName="IDBI LTD." xmlns="http://cpsms.com/TransactionsDataAck"><OriginalMessageId>691TRNREQ1712202513</OriginalMessageId><RecordsCount>1000</RecordsCount><ResponseCode>S</ResponseCode><ResponseDescription></ResponseDescription></Acknowledgement>
