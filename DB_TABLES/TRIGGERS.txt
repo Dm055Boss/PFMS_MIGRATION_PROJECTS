@@ -1,0 +1,322 @@
+create or replace TRIGGER TRG_PCM_ACK_REGEN_PART1
+BEFORE INSERT OR UPDATE OF
+  INI_GRP_STATUS,
+  SUC_GRP_STATUS,
+  REJ_GRP_STATUS
+ON PAYMENT_CREDIT_MASTER
+FOR EACH ROW
+DECLARE
+  -- Batch-level data (from PAYMENT_BATCH_MASTER)
+  v_batch_number   PAYMENT_BATCH_MASTER.BATCH_NUMBER%TYPE;
+  v_record_count   PAYMENT_BATCH_MASTER.RECORD_COUNT%TYPE;
+  v_payment_prod   PAYMENT_BATCH_MASTER.PAYMENT_PROD%TYPE;
+  v_req_msg_id     PAYMENT_BATCH_MASTER.REQUEST_MESSAGE_ID%TYPE;
+  v_res_msg_id     PAYMENT_BATCH_MASTER.RESPONSE_MESSAGE_ID%TYPE;
+  v_batch_created  PAYMENT_BATCH_MASTER.CREATED_DATE%TYPE;
+  v_batch_modified PAYMENT_BATCH_MASTER.MODIFIED_DATE%TYPE;
+  v_authmod        PAYMENT_BATCH_MASTER.AUTHMOD%TYPE;
+
+  v_batch_loaded   BOOLEAN := FALSE;
+
+  -----------------------------------------------------------------
+  -- Load batch header only once per row (if needed)
+  -----------------------------------------------------------------
+  PROCEDURE load_batch_info IS
+  BEGIN
+    IF v_batch_loaded THEN
+      RETURN;
+    END IF;
+
+    IF :NEW.SEQ_BATCH_ID IS NOT NULL THEN
+      BEGIN
+        SELECT BATCH_NUMBER,
+               RECORD_COUNT,
+               PAYMENT_PROD,
+               REQUEST_MESSAGE_ID,
+               RESPONSE_MESSAGE_ID,
+               CREATED_DATE,
+               MODIFIED_DATE,
+               AUTHMOD
+          INTO v_batch_number,
+               v_record_count,
+               v_payment_prod,
+               v_req_msg_id,
+               v_res_msg_id,
+               v_batch_created,
+               v_batch_modified,
+               v_authmod
+          FROM PAYMENT_BATCH_MASTER
+         WHERE SEQ_BATCH_ID = :NEW.SEQ_BATCH_ID;
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          v_batch_number   := NULL;
+          v_record_count   := NULL;
+          v_payment_prod   := NULL;
+          v_req_msg_id     := NULL;
+          v_res_msg_id     := NULL;
+          v_batch_created  := NULL;
+          v_batch_modified := NULL;
+          v_authmod        := NULL;
+      END;
+    ELSE
+      v_batch_number   := NULL;
+      v_record_count   := NULL;
+      v_payment_prod   := NULL;
+      v_req_msg_id     := NULL;
+      v_res_msg_id     := NULL;
+      v_batch_created  := NULL;
+      v_batch_modified := NULL;
+      v_authmod        := NULL;
+    END IF;
+
+    v_batch_loaded := TRUE;
+  END load_batch_info;
+
+BEGIN
+  -----------------------------------------------------------------
+  -- INI TYPE: grp status 'E' & not yet pushed
+  -----------------------------------------------------------------
+  IF :NEW.INI_GRP_STATUS = 'E'
+     AND :NEW.INI_PUSHED_STATUS IS NULL THEN
+
+    load_batch_info;
+
+    INSERT INTO PAYMENT_REGEN_REQUESTS (
+      SEQ_BATCH_ID,              -- [NEW]
+      DEBIT_ID,                  -- [NEW]
+      SEQ_CREDIT_ID,             -- [NEW]
+      BATCH_NUMBER,
+      RECORD_COUNT,
+      PAYMENT_PROD,
+      REQUEST_MESSAGE_ID,
+      RESPONSE_MESSAGE_ID,
+      CREATED_DATE,
+      MODIFIED_DATE,
+      MAKER_ID,
+      CHECKER_ID,
+      FILETYPE,
+      ACTION,
+      C6346_INI,
+      C6366_INI,
+      C6346_SUCC,
+      C6346_REJ,
+      C6366_REJ,
+      AUTHMOD,
+      CREDIT_ACCOUNT_NUMBER,
+      INITIATING_UTR,
+      TRAN_ID_FT,
+      PMT_MTD,
+      INI_GRP_STATUS,
+      SUC_GRP_STATUS,
+      REJ_GRP_STATUS,
+      INIACK_ERRORCODE,
+      SUCACK_ERRORCODE,
+      REJACK_ERRORCODE,
+      NEW_INI_ID,
+      NEW_SUCCESS_ID,
+      NEW_FAILURE_ID
+    ) VALUES (
+      :NEW.SEQ_BATCH_ID,         -- [NEW]
+      :NEW.DEBIT_ID,             -- [NEW]
+      :NEW.SEQ_CREDIT_ID,        -- [NEW]
+      v_batch_number,
+      v_record_count,
+      v_payment_prod,
+      v_req_msg_id,
+      v_res_msg_id,
+      v_batch_created,
+      v_batch_modified,
+      NULL,               -- MAKER_ID (NULL at start)
+      NULL,               -- CHECKER_ID (NULL at start)
+      'INI',              -- FILETYPE
+      NULL,               -- ACTION (NULL at start)
+      :NEW.C6346_INI,
+      :NEW.C6366_INI,
+      :NEW.C6346_SUCC,
+      :NEW.C6346_REJ,
+      :NEW.C6366_REJ,
+      v_authmod,          -- from batch, not credit
+      :NEW.CREDIT_ACCOUNT_NUMBER,
+      :NEW.INITIATING_UTR,
+      :NEW.TRAN_ID_FT,
+      :NEW.PMT_MTD,
+      :NEW.INI_GRP_STATUS,  -- only INI status
+      NULL,                 -- SUC_GRP_STATUS not filled for INI case
+      NULL,                 -- REJ_GRP_STATUS not filled for INI case
+      :NEW.INIACK_ERRORCODE,
+      NULL,                 -- SUCACK_ERRORCODE not filled for INI case
+      NULL,                 -- REJACK_ERRORCODE not filled for INI case
+      NULL,                 -- NEW_INI_ID (to be filled after regen)
+      NULL,                 -- NEW_SUCCESS_ID
+      NULL                  -- NEW_FAILURE_ID
+    );
+
+    -- Mark INI pushed, to avoid duplicate regen rows
+    :NEW.INI_PUSHED_STATUS := 'Y';
+  END IF;
+
+  -----------------------------------------------------------------
+  -- SUC TYPE: grp status 'E' & not yet pushed
+  -----------------------------------------------------------------
+  IF :NEW.SUC_GRP_STATUS = 'E'
+     AND :NEW.SUC_PUSHED_STATUS IS NULL THEN
+
+    load_batch_info;
+
+    INSERT INTO PAYMENT_REGEN_REQUESTS (
+      SEQ_BATCH_ID,              -- [NEW]
+      DEBIT_ID,                  -- [NEW]
+      SEQ_CREDIT_ID,             -- [NEW]
+      BATCH_NUMBER,
+      RECORD_COUNT,
+      PAYMENT_PROD,
+      REQUEST_MESSAGE_ID,
+      RESPONSE_MESSAGE_ID,
+      CREATED_DATE,
+      MODIFIED_DATE,
+      MAKER_ID,
+      CHECKER_ID,
+      FILETYPE,
+      ACTION,
+      C6346_INI,
+      C6366_INI,
+      C6346_SUCC,
+      C6346_REJ,
+      C6366_REJ,
+      AUTHMOD,
+      CREDIT_ACCOUNT_NUMBER,
+      INITIATING_UTR,
+      TRAN_ID_FT,
+      PMT_MTD,
+      INI_GRP_STATUS,
+      SUC_GRP_STATUS,
+      REJ_GRP_STATUS,
+      INIACK_ERRORCODE,
+      SUCACK_ERRORCODE,
+      REJACK_ERRORCODE,
+      NEW_INI_ID,
+      NEW_SUCCESS_ID,
+      NEW_FAILURE_ID
+    ) VALUES (
+      :NEW.SEQ_BATCH_ID,         -- [NEW]
+      :NEW.DEBIT_ID,             -- [NEW]
+      :NEW.SEQ_CREDIT_ID,        -- [NEW]
+      v_batch_number,
+      v_record_count,
+      v_payment_prod,
+      v_req_msg_id,
+      v_res_msg_id,
+      v_batch_created,
+      v_batch_modified,
+      NULL,               -- MAKER_ID (NULL at start)
+      NULL,               -- CHECKER_ID (NULL at start)
+      'SUC',              -- FILETYPE
+      NULL,               -- ACTION (NULL at start)
+      :NEW.C6346_INI,
+      :NEW.C6366_INI,
+      :NEW.C6346_SUCC,
+      :NEW.C6346_REJ,
+      :NEW.C6366_REJ,
+      v_authmod,
+      :NEW.CREDIT_ACCOUNT_NUMBER,
+      :NEW.INITIATING_UTR,
+      :NEW.TRAN_ID_FT,
+      :NEW.PMT_MTD,
+      NULL,                 -- INI_GRP_STATUS not filled for SUC case
+      :NEW.SUC_GRP_STATUS,  -- SUC status
+      NULL,                 -- REJ_GRP_STATUS not filled for SUC case
+      NULL,                 -- INIACK_ERRORCODE not filled for SUC case
+      :NEW.SUCACK_ERRORCODE,
+      NULL,                 -- REJACK_ERRORCODE not filled for SUC case
+      NULL,                 -- NEW_INI_ID
+      NULL,                 -- NEW_SUCCESS_ID (to be filled after regen)
+      NULL                  -- NEW_FAILURE_ID
+    );
+
+    -- Mark SUC pushed
+    :NEW.SUC_PUSHED_STATUS := 'Y';
+  END IF;
+
+  -----------------------------------------------------------------
+  -- REJ TYPE: grp status 'E' & not yet pushed
+  -----------------------------------------------------------------
+  IF :NEW.REJ_GRP_STATUS = 'E'
+     AND :NEW.REJ_PUSHED_STATUS IS NULL THEN
+
+    load_batch_info;
+
+    INSERT INTO PAYMENT_REGEN_REQUESTS (
+      SEQ_BATCH_ID,              -- [NEW]
+      DEBIT_ID,                  -- [NEW]
+      SEQ_CREDIT_ID,             -- [NEW]
+      BATCH_NUMBER,
+      RECORD_COUNT,
+      PAYMENT_PROD,
+      REQUEST_MESSAGE_ID,
+      RESPONSE_MESSAGE_ID,
+      CREATED_DATE,
+      MODIFIED_DATE,
+      MAKER_ID,
+      CHECKER_ID,
+      FILETYPE,
+      ACTION,
+      C6346_INI,
+      C6366_INI,
+      C6346_SUCC,
+      C6346_REJ,
+      C6366_REJ,
+      AUTHMOD,
+      CREDIT_ACCOUNT_NUMBER,
+      INITIATING_UTR,
+      TRAN_ID_FT,
+      PMT_MTD,
+      INI_GRP_STATUS,
+      SUC_GRP_STATUS,
+      REJ_GRP_STATUS,
+      INIACK_ERRORCODE,
+      SUCACK_ERRORCODE,
+      REJACK_ERRORCODE,
+      NEW_INI_ID,
+      NEW_SUCCESS_ID,
+      NEW_FAILURE_ID
+    ) VALUES (
+      :NEW.SEQ_BATCH_ID,         -- [NEW]
+      :NEW.DEBIT_ID,             -- [NEW]
+      :NEW.SEQ_CREDIT_ID,        -- [NEW]
+      v_batch_number,
+      v_record_count,
+      v_payment_prod,
+      v_req_msg_id,
+      v_res_msg_id,
+      v_batch_created,
+      v_batch_modified,
+      NULL,               -- MAKER_ID (NULL at start)
+      NULL,               -- CHECKER_ID (NULL at start)
+      'REJ',              -- FILETYPE
+      NULL,               -- ACTION (NULL at start)
+      :NEW.C6346_INI,
+      :NEW.C6366_INI,
+      :NEW.C6346_SUCC,
+      :NEW.C6346_REJ,
+      :NEW.C6366_REJ,
+      v_authmod,
+      :NEW.CREDIT_ACCOUNT_NUMBER,
+      :NEW.INITIATING_UTR,
+      :NEW.TRAN_ID_FT,
+      :NEW.PMT_MTD,
+      NULL,                 -- INI_GRP_STATUS not filled for REJ case
+      NULL,                 -- SUC_GRP_STATUS not filled for REJ case
+      :NEW.REJ_GRP_STATUS,  -- REJ status
+      NULL,                 -- INIACK_ERRORCODE not filled for REJ case
+      NULL,                 -- SUCACK_ERRORCODE not filled for REJ case
+      :NEW.REJACK_ERRORCODE,
+      NULL,                 -- NEW_INI_ID
+      NULL,                 -- NEW_SUCCESS_ID
+      NULL                  -- NEW_FAILURE_ID (to be filled after regen)
+    );
+
+    -- Mark REJ pushed
+    :NEW.REJ_PUSHED_STATUS := 'Y';
+  END IF;
+
+END;
