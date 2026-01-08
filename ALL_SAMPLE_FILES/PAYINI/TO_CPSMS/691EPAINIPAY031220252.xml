@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<InitiatedPayments xmlns="http://cpsms.com/InitiatedPaymentData" BankCode="691" BankName="IDBI BANK" Destination="CPSMS" MessageId="691EPAINIPAY031220252" PaymentProduct="EPA" RecordsCount="1" Source="691">
+  <BatchDetails CPSMSBatchNo="C092539660797">
+    <DebitTransactions C4063=" C102567573999" C5185="1" C5756=" IBKL0000321" C6021=" 0321104000591911">
+      <Debit>
+        <C2006> 819356294930599</C2006>
+        <C2020> SUCC</C2020>
+        <C3501> 100000</C3501>
+        <C4063> C102567573999</C4063>
+        <C6346> BRNC</C6346>
+        <AuthMode> 20251119000000</AuthMode>
+      </Debit>
+    </DebitTransactions>
+    <CreditTransactions C5185="1">
+      <Credit>
+        <C2006> C102567573904</C2006>
+        <C5569> KVBL0001153</C5569>
+        <C6061> 1153135000020110</C6061>
+        <BankIIN> NA</BankIIN>
+        <C2020> </C2020>
+        <C3501> 20251119192600</C3501>
+        <C4038> 100000</C4038>
+        <C6346> SUCC</C6346>
+        <C3380> 20251119192600</C3380>
+        <C3375> 20251119192600</C3375>
+        <C3381> 20251119192600</C3381>
+        <C6081> G R ENTERPRISE</C6081>
+        <PmtRoute> NEFT</PmtRoute>
+      </Credit>
+    </CreditTransactions>
+  </BatchDetails>
+</InitiatedPayments>

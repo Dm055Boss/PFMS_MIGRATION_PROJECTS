@@ -1,0 +1,46 @@
+<FileAck MsgId="691EPAREJPAYACK120820251" MsgCrDtTm="2025-08-12T14:24:17.973" Src="PFMS" Dest="691" BankCode="691" BankName="IDBI BANK LTD" NbOfTxs="8" xmlns="http://pfms.nic.in/FileAck">
+  <FileAckDetails>
+    <MsgTp MsgNm="REJPAYACK">
+      <Data MsgId="691EPAREJPAY11082025700037" FN="691EPAREJPAY11082025700037.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072558945635" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY12082025700000" FN="691EPAREJPAY12082025700000.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072555577775" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY11082025700038" FN="691EPAREJPAY11082025700038.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072558972715" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY12082025700001" FN="691EPAREJPAY12082025700001.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072558945635" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY12082025700002" FN="691EPAREJPAY12082025700002.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072558972715" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY11082025700039" FN="691EPAREJPAY11082025700039.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072562868851" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY12082025700003" FN="691EPAREJPAY12082025700003.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072562868851" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAREJPAY11082025700036" FN="691EPAREJPAY11082025700036.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C072555577775" ResCd="S">
+          <Err />
+        </InfId>
+      </Data>
+    </MsgTp>
+  </FileAckDetails>
+</FileAck>

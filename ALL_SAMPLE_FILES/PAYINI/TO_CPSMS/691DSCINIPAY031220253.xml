@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<InitiatedPayments xmlns="http://cpsms.com/InitiatedPaymentData" BankCode="691" BankName="IDBI BANK" Destination="CPSMS" MessageId="691DSCINIPAY031220253" PaymentProduct="DSC" RecordsCount="1" Source="691">
+  <BatchDetails CPSMSBatchNo="C102567929912">
+    <DebitTransactions C4063=" C102567929912" C5185="1" C5756=" IBKL0000057" C6021=" 0057104000337939">
+      <Debit>
+        <C2006> 201052045858080</C2006>
+        <C2020> SUCC</C2020>
+        <C3501> 659611</C3501>
+        <C4063> C102567929912</C4063>
+        <C6346> NA</C6346>
+        <AuthMode> 20251119225325</AuthMode>
+      </Debit>
+    </DebitTransactions>
+    <CreditTransactions C5185="1">
+      <Credit>
+        <C2006> C102567929917</C2006>
+        <C5569> IBKL0000057</C5569>
+        <C6061> 0057104000290531</C6061>
+        <BankIIN> 000000</BankIIN>
+        <C2020> </C2020>
+        <C3501> 20251203182800</C3501>
+        <C4038> 45019</C4038>
+        <C6346> SUCC</C6346>
+        <C3380> 20251203182800</C3380>
+        <C3375> 20251203182800</C3375>
+        <C3381> 20251203182800</C3381>
+        <C6081> SONAM  ARORA</C6081>
+        <PmtRoute> APBS</PmtRoute>
+      </Credit>
+    </CreditTransactions>
+  </BatchDetails>
+</InitiatedPayments>

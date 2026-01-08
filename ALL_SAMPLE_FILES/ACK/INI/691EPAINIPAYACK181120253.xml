@@ -1,0 +1,146 @@
+ <FileAck MsgId="691EPAINIPAYACK181120253" MsgCrDtTm="2025-11-18T14:18:05.290" Src="PFMS" Dest="691" BankCode="691" BankName="IDBI BANK LTD" NbOfTxs="28" xmlns="http://pfms.nic.in/FileAck">
+  <FileAckDetails>
+    <MsgTp MsgNm="INIPAYACK">
+      <Data MsgId="691EPAINIPAY1811202561" FN="691EPAINIPAY1811202561.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112511142062" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202556" FN="691EPAINIPAY1811202556.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C032568710012" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202562" FN="691EPAINIPAY1811202562.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112511144500" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202581" FN="691EPAINIPAY1811202581.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522646519" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202568" FN="691EPAINIPAY1811202568.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112513951913" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202566" FN="691EPAINIPAY1811202566.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112512622268" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202586" FN="691EPAINIPAY1811202586.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522685094" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202580" FN="691EPAINIPAY1811202580.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112517002915" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202567" FN="691EPAINIPAY1811202567.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112512623541" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202585" FN="691EPAINIPAY1811202585.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522677665" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202557" FN="691EPAINIPAY1811202557.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112510048162" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202570" FN="691EPAINIPAY1811202570.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112524185808" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202564" FN="691EPAINIPAY1811202564.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112511186672" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202560" FN="691EPAINIPAY1811202560.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112510151317" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202588" FN="691EPAINIPAY1811202588.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112527219699" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202558" FN="691EPAINIPAY1811202558.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112510050485" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202569" FN="691EPAINIPAY1811202569.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522869661" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202559" FN="691EPAINIPAY1811202559.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112510149601" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202574" FN="691EPAINIPAY1811202574.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112525941310" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202583" FN="691EPAINIPAY1811202583.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522656850" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202587" FN="691EPAINIPAY1811202587.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112526866844" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202571" FN="691EPAINIPAY1811202571.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112524289678" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202572" FN="691EPAINIPAY1811202572.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112524669538" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202565" FN="691EPAINIPAY1811202565.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112511865730" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202573" FN="691EPAINIPAY1811202573.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112524714874" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202582" FN="691EPAINIPAY1811202582.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522651755" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202563" FN="691EPAINIPAY1811202563.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112511151370" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+      <Data MsgId="691EPAINIPAY1811202584" FN="691EPAINIPAY1811202584.xml" RecCnt="1" GpSts="S" ErrCd="">
+        <InfId Id="C112522667242" ResCd="S" ErrCd="">
+          <Err />
+        </InfId>
+      </Data>
+    </MsgTp>
+  </FileAckDetails>
+</FileAck>

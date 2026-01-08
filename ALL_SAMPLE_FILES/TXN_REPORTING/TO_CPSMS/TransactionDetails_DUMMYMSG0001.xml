@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TransactionDetails BankCode="691" BankName="IDBI BANK" Destination="CPSMS" MessageId="DUMMYMSG0001" RecordsCount="1" Source="1">
+    <Account AccountNo="123456789012" BSRCode="1234567" ClosingBalance="9500.00" ClosingBalanceDate="2025-12-09" OpeningBalance="10000.00" OpeningBalanceDate="2025-12-01" ShadowClosingBalance="9500.00" ShadowOpeningBalance="10000.00" TransactionCount="2">
+        <Transaction>
+            <Date>2025-12-05</Date>
+            <ValueDate>2025-12-05</ValueDate>
+            <TransactionType>DR</TransactionType>
+            <TransactionCategory>1</TransactionCategory>
+            <ChannelType>NEFT</ChannelType>
+            <InstrumentNo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">CHQ123456</InstrumentNo>
+            <InstrumentDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">2025-12-04</InstrumentDate>
+            <Amount>500.00</Amount>
+            <PostTranBal>9500.00</PostTranBal>
+            <Remarks>Dummy debit transaction</Remarks>
+            <DrCrAccountNumber>999900001111</DrCrAccountNumber>
+            <DrCrAccountName>BENEFICIARY A</DrCrAccountName>
+            <DrCrBnkNm>XYZ BANK</DrCrBnkNm>
+            <DrCrBnkBrCd>000123</DrCrBnkBrCd>
+            <UniqueTransactionNumber>UTN0001</UniqueTransactionNumber>
+            <TranRefNo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">REF0001</TranRefNo>
+            <CPSMSTransactionId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">CPSMS0001</CPSMSTransactionId>
+            <Narratives>
+                <Narration SrNo="1" Text="Dummy narration line 1 for DR"/>
+            </Narratives>
+        </Transaction>
+        <Transaction>
+            <Date>2025-12-06</Date>
+            <ValueDate>2025-12-06</ValueDate>
+            <TransactionType>CR</TransactionType>
+            <TransactionCategory>2</TransactionCategory>
+            <ChannelType>RTGS</ChannelType>
+            <InstrumentNo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">RTGS987654</InstrumentNo>
+            <InstrumentDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">2025-12-06</InstrumentDate>
+            <Amount>1500.00</Amount>
+            <PostTranBal>11000.00</PostTranBal>
+            <Remarks>Dummy credit transaction</Remarks>
+            <DrCrAccountNumber>222233334444</DrCrAccountNumber>
+            <DrCrAccountName>BENEFICIARY B</DrCrAccountName>
+            <DrCrBnkNm>ABC BANK</DrCrBnkNm>
+            <DrCrBnkBrCd>000456</DrCrBnkBrCd>
+            <UniqueTransactionNumber>UTN0002</UniqueTransactionNumber>
+            <TranRefNo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">REF0002</TranRefNo>
+            <CPSMSTransactionId xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">CPSMS0002</CPSMSTransactionId>
+            <Narratives>
+                <Narration SrNo="1" Text="Dummy narration line 1 for CR"/>
+            </Narratives>
+        </Transaction>
+    </Account>
+</TransactionDetails>

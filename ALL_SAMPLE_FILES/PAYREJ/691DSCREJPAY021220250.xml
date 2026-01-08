@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RejectedPayments xmlns="http://cpsms.com/RejectedPaymentData" BankCode="691" BankName="IDBI BANK" Destination="CPSMS" MessageId="691DSCREJPAY021220250" PaymentProduct="DSC" RecordsCount="1" Source="691">
+    <BatchDetails C4115="19148.00" C5185="1" CPSMSBatchNo="C102567929912">
+        <RejectedPayment>
+            <C2020> </C2020>
+            <C5756>IBKL0000057</C5756>
+            <C2006>C102567929914</C2006>
+            <BankIIN> </BankIIN>
+            <UID> </UID>
+            <C5569>IBKL0000057</C5569>
+            <C6061>0057104000290715</C6061>
+            <C6081>HARI HAR RAM</C6081>
+            <C5565> </C5565>
+            <C4038>19148</C4038>
+            <C3380>20251119225325</C3380>
+            <C3375>20251119225325</C3375>
+            <C3381>20251119225325</C3381>
+            <C7495>C102567929914|C102567929912|Credit Through PFMS</C7495>
+            <PmtRoute>APBS</PmtRoute>
+        </RejectedPayment>
+    </BatchDetails>
+</RejectedPayments>

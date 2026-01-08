@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RejectedPayments xmlns="http://cpsms.com/RejectedPaymentData" BankCode="691" BankName="IDBI BANK" Destination="CPSMS" MessageId="691EPAREJPAY19112025700002" PaymentProduct="EPA" RecordsCount="1" Source="691">
+    <BatchDetails C4115="100000.00" C5185="1" CPSMSBatchNo="C102567573999">
+        <RejectedPayment>
+            <C2020> </C2020>
+            <C5756>IBKL0000321</C5756>
+            <C2006>C102567573904</C2006>
+            <BankIIN> </BankIIN>
+            <UID> </UID>
+            <C5569>KVBL0001153</C5569>
+            <C6061>1153135000020110</C6061>
+            <C6081>G R ENTERPRISE</C6081>
+            <C5565> </C5565>
+            <C4038>100000</C4038>
+            <C3380>20251110004416</C3380>
+            <C3375>20251119000000</C3375>
+            <C3381>20251119000000</C3381>
+            <C7495>C102567573904|C102567573999|Credit Through PFMS</C7495>
+            <PmtRoute>NEFT</PmtRoute>
+        </RejectedPayment>
+    </BatchDetails>
+</RejectedPayments>

@@ -1,0 +1,14 @@
+<FileAck MsgId="691DSCSUCPAYACK270920251" MsgCrDtTm="2025-09-27T15:04:37.810" Src="PFMS" Dest="691" BankCode="691" BankName="IDBI BANK LTD" NbOfTxs="1" xmlns="http://pfms.nic.in/FileAck">
+  <FileAckDetails>
+    <MsgTp MsgNm="SUCPAYACK">
+	<Data MsgId="691DSCSUCPAY2609202561" FN="691DSCSUCPAY2609202561.xml" RecCnt="1" GpSts="E" ErrCd="572">
+        <InfId Id="C092539660797" ResCd="F" ErrCd=" | 572">
+          <Err>
+            <RcrdId>C092539661950</RcrdId>
+            <ErrCd> | 572</ErrCd>
+          </Err>
+        </InfId>
+      </Data>
+</MsgTp>
+  </FileAckDetails>
+</FileAck>
